@@ -71,7 +71,7 @@
 
 <body>
     <div class="Introduction">
-        <h1>[H1]HTML練習中</h1>
+        <h1>ポケモンスリープ寝顔チェッカー(HTML練習中)</h1>
         <p>HTMLの練習中です。</p>
     </div>
 
@@ -94,10 +94,13 @@
         <input type="radio" id="tab6" name="tab-4">
         <label for="tab6">ラピスラズリ湖畔</label>
 
+        <input type="radio" id="tab6" name="tab-4">
+        <label for="tab6">ゴールド旧発電所</label>
+
         <!-- 1つ目のタブの内容 -->
         <div class="tab-content">
-            寝顔の一覧が表示され、取得済みの寝顔をチェックすることで、
-            2つ目以降のタブで取得状況が確認できるようになります。
+            取得済みの寝顔をチェックしてください。
+            2つ目以降のタブで各フィールドの寝顔取得状況が確認できるようになります。
 
             <table>
                 <thead>
@@ -115,7 +118,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td><input type="checkbox"></td>
                         <td>001</td>
                         <td>1</td>
                         <td>フシギダネ</td>
@@ -126,7 +129,7 @@
                         <td>ノーマル1</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td><input type="checkbox"></td>
                         <td>001</td>
                         <td>2</td>
                         <td>フシギダネ</td>
@@ -137,7 +140,7 @@
                         <td>ノーマル1</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td> <!-- Gotcha: False -->
+                        <td><input type="checkbox"></td>
                         <td>001</td>
                         <td>3</td>
                         <td>フシギダネ</td>
@@ -174,6 +177,11 @@
         <!-- 6つ目のタブの内容 -->
         <div class="tab-content">
             ラピスラズリ湖畔の寝顔取得状況が表示されるタブです。
+        </div>
+
+        <!-- 7つ目のタブの内容 -->
+        <div class="tab-content">
+            ゴールド旧発電所の寝顔取得状況が表示されるタブです。
         </div>
     </div>
 </body>
