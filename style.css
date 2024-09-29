@@ -48,3 +48,12 @@
 .tab-4 label:has(:checked) + div {
     display: block;
 }
+
+input[type="checkbox"] {
+    display: inline-block; /* チェックボックスを表示 */
+}
+
+label {
+    display: inline-block; /* ラベルも表示 */
+    margin-left: 10px; /* チェックボックスとラベルの間にスペース */
+}
