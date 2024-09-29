@@ -5,55 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>はじめてのHTMLがんばりマン</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* 以前のCSS */
-        .tab-4 {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1000px;
-        }
-
-        .tab-4 > label {
-            cursor: pointer;
-            padding: .7em 1em;
-            background-color: #f2f2f2;
-            color: #999;
-            font-size: .9em;
-            text-align: center;
-        }
-
-        .tab-4 > input[type="radio"] {
-            display: none;
-        }
-
-        .tab-content {
-            display: none;
-            width: 100%;
-            padding: 1.5em 1em;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-        }
-
-        .tab-4 input[type="radio"]:checked + label + .tab-content {
-            display: block;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
 </head>
 
 <body>
@@ -69,12 +20,24 @@
         <input type="radio" id="tab2" name="tab-4">
         <label for="tab2">ワカクサ本島</label>
 
+        <input type="radio" id="tab3" name="tab-4">
+        <label for="tab3">シアンの砂浜</label>
+
+        <input type="radio" id="tab4" name="tab-4">
+        <label for="tab4">トープ洞窟</label>
+
+        <input type="radio" id="tab5" name="tab-4">
+        <label for="tab5">ウノハナ雪原</label>
+
+        <input type="radio" id="tab6" name="tab-4">
+        <label for="tab6">ラピスラズリ湖畔</label>
+
         <!-- 1つ目のタブの内容 -->
         <div class="tab-content">
             寝顔の一覧が表示され、取得済みの寝顔をチェックすることで、
             2つ目以降のタブで取得状況が確認できるようになります。
 
-            <table id="main-table">
+            <table>
                 <thead>
                     <tr>
                         <th>Gotcha</th>
@@ -116,7 +79,7 @@
                         <td>001</td>
                         <td>3</td>
                         <td>フシギダネ</td>
-                        <td></td> <!-- ワカクサ本島に値がない -->
+                        <td>0</td>
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
@@ -124,59 +87,15 @@
                     </tr>
                 </tbody>
             </table>
-            <button onclick="filterRows()">フィルタを適用</button>
         </div>
 
         <!-- 2つ目のタブの内容 -->
-        <div class="tab-content" id="filtered-content">
-            <!-- フィルタされた行をここに表示します -->
-            <h2>フィルタされた結果</h2>
-            <table id="filtered-table">
-                <thead>
-                    <tr>
-                        <th>Gotcha</th>
-                        <th>No.</th>
-                        <th>Rarity</th>
-                        <th>Name</th>
-                        <th>ワカクサ本島</th>
-                        <th>シアンの砂浜</th>
-                        <th>トープ洞窟</th>
-                        <th>ウノハナ雪原</th>
-                        <th>ラピスラズリ湖畔</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- JavaScriptで動的に追加されます -->
-                </tbody>
-            </table>
+        <div class="tab-content">
+            ワカクサ本島の寝顔取得状況が表示されるタブです。
         </div>
+
+        <!-- 他のタブは省略 -->
     </div>
-
-    <script>
-        function filterRows() {
-            // メインのテーブルを取得
-            const mainTable = document.querySelector("#main-table tbody");
-            const rows = mainTable.querySelectorAll("tr");
-
-            // フィルタされたテーブルの tbody を取得
-            const filteredTableBody = document.querySelector("#filtered-table tbody");
-
-            // 既存のフィルタされた行をクリア
-            filteredTableBody.innerHTML = "";
-
-            // 各行をループして条件に合う行をフィルタ
-            rows.forEach(row => {
-                const checkbox = row.querySelector("input[type='checkbox']");
-                const column5 = row.cells[4].textContent.trim(); // 5列目の値を取得
-
-                if (checkbox.checked && column5 !== "") {
-                    // 行の内容をクローンして2つ目のタブに追加
-                    const clonedRow = row.cloneNode(true);
-                    filteredTableBody.appendChild(clonedRow);
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>
