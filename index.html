@@ -78,7 +78,7 @@
             取得済みの寝顔をチェックしてください。
             2つ目以降のタブで各フィールドの寝顔取得状況が確認できるようになります。
 
-            <table>
+            <table id="main-table">
                 <thead>
                     <tr>
                         <th>Gotcha</th>
@@ -95,7 +95,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
                         <td>001</td>
                         <td>1</td>
                         <td>フシギダネ</td>
@@ -107,7 +107,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
                         <td>001</td>
                         <td>2</td>
                         <td>フシギダネ</td>
@@ -119,7 +119,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td> <!-- Gotcha: False -->
                         <td>001</td>
                         <td>3</td>
                         <td>フシギダネ</td>
@@ -131,18 +131,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
-                        <td>001</td>
-                        <td>4</td>
-                        <td>フシギダネ</td>
-                        <td>スーパー2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>スーパー1</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
                         <td>002</td>
                         <td>1</td>
                         <td>フシギソウ</td>
@@ -154,7 +143,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
                         <td>002</td>
                         <td>2</td>
                         <td>フシギソウ</td>
@@ -167,12 +156,33 @@
                     </tr>
                 </tbody>
             </table>
+            <button onclick="filterRows()">フィルタを適用</button>
         </div>
 
         <input type="radio" id="tab2" name="tab-4">
         <label for="tab2">ワカクサ本島</label>
-        <div class="tab-content">
-            ワカクサ本島の寝顔取得状況が表示されるタブです。
+        <div class="tab-content" id="filtered-content">
+            <!-- 2つ目のタブの内容 -->
+            <h2>フィルタされた結果</h2>
+            <table id="filtered-table">
+                <thead>
+                    <tr>
+                        <th>Gotcha</th>
+                        <th>No.</th>
+                        <th>Rarity</th>
+                        <th>Name</th>
+                        <th>ワカクサ本島</th>
+                        <th>シアンの砂浜</th>
+                        <th>トープ洞窟</th>
+                        <th>ウノハナ雪原</th>
+                        <th>ラピスラズリ湖畔</th>
+                        <th>ゴールド旧発電所</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- JavaScriptでフィルタされた行が追加されます -->
+                </tbody>
+            </table>
         </div>
 
         <input type="radio" id="tab3" name="tab-4">
@@ -206,5 +216,19 @@
         </div>
         
     </div>
-</body>
-</html>
+
+    <script>
+        function filterRows() {
+            // メインのテーブルを取得
+            const mainTable = document.querySelector("#main-table tbody");
+            const rows = mainTable.querySelectorAll("tr");
+
+            // フィルタされたテーブルの tbody を取得
+            const filteredTableBody = document.querySelector("#filtered-table tbody");
+
+            // 既存のフィルタされた行をクリア
+            filteredTableBody.innerHTML = "";
+
+            // 各行をループして条件に合う行をフィルタ
+            rows.forEach(row => {
+                const checkbox
