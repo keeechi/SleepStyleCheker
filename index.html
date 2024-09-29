@@ -1,91 +1,215 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>はじめてのHTMLがんばりマン</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 基本スタイル */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .tab-4 {
+            margin: 20px;
+        }
+
+        /* タブの切り替えを制御 */
+        .tab-4 input[type="radio"] {
+            display: none;
+        }
+        .tab-4 label {
+            cursor: pointer;
+            padding: 10px;
+            margin-right: 5px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+        .tab-4 label:hover {
+            background-color: #ddd;
+        }
+        .tab-4 input[type="radio"]:checked + label {
+            background-color: #ccc;
+            font-weight: bold;
+        }
+
+        /* タブコンテンツの表示切替 */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .tab-4 input[type="radio"]:nth-of-type(1):checked ~ .tab-content:nth-of-type(1),
+        .tab-4 input[type="radio"]:nth-of-type(2):checked ~ .tab-content:nth-of-type(2),
+        .tab-4 input[type="radio"]:nth-of-type(3):checked ~ .tab-content:nth-of-type(3),
+        .tab-4 input[type="radio"]:nth-of-type(4):checked ~ .tab-content:nth-of-type(4),
+        .tab-4 input[type="radio"]:nth-of-type(5):checked ~ .tab-content:nth-of-type(5),
+        .tab-4 input[type="radio"]:nth-of-type(6):checked ~ .tab-content:nth-of-type(6) {
+            display: block;
+        }
+
+        /* テーブルスタイル */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Introduction">
+        <h1>[H1]HTML練習中</h1>
+        <p>HTMLの練習中です。</p>
+    </div>
+
+    <div class="tab-4">
+        <input type="radio" id="tab1" name="tab-4" checked>
+        <label for="tab1">チェックリスト</label>
+        
+        <input type="radio" id="tab2" name="tab-4">
+        <label for="tab2">ワカクサ本島</label>
+        
+        <input type="radio" id="tab3" name="tab-4">
+        <label for="tab3">シアンの砂浜</label>
+        
+        <input type="radio" id="tab4" name="tab-4">
+        <label for="tab4">トープ洞窟</label>
+        
+        <input type="radio" id="tab5" name="tab-4">
+        <label for="tab5">ウノハナ雪原</label>
+        
+        <input type="radio" id="tab6" name="tab-4">
+        <label for="tab6">ラピスラズリ湖畔</label>
+
+        <!-- 1つ目のタブの内容 -->
+        <div class="tab-content">
+            寝顔の一覧が表示され、取得済みの寝顔をチェックすることで、
+            2つ目以降のタブで取得状況が確認できるようになります。
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gotcha</th>
+                        <th>No.</th>
+                        <th>Rarity</th>
+                        <th>Name</th>
+                        <th>ワカクサ本島</th>
+                        <th>シアンの砂浜</th>
+                        <th>トープ洞窟</th>
+                        <th>ウノハナ雪原</th>
+                        <th>ラピスラズリ湖畔</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td>001</td>
+                        <td>1</td>
+                        <td>フシギダネ</td>
+                        <td>ノーマル2</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>ノーマル1</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td>001</td>
+                        <td>2</td>
+                        <td>フシギダネ</td>
+                        <td>スーパー1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>ノーマル1</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td> <!-- Gotcha: False -->
+                        <td>001</td>
+                        <td>3</td>
+                        <td>フシギダネ</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>スーパー1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2つ目のタブの内容 -->
+        <div class="tab-content">
+            ワカクサ本島の寝顔取得状況が表示されるタブです。
+        </div>
+
+        <!-- 3つ目のタブの内容 -->
+        <div class="tab-content">
+            シアンの砂浜の寝顔取得状況が表示されるタブです。
+        </div>
+
+        <!-- 4つ目のタブの内容 -->
+        <div class="tab-content">
+            トープ洞窟の寝顔取得状況が表示されるタブです。
+        </div>
+
+        <!-- 5つ目のタブの内容 -->
+        <div class="tab-content">
+            ウノハナ雪原の寝顔取得状況が表示されるタブです。
+        </div>
+
+        <!-- 6つ目のタブの内容 -->
+        <div class="tab-content">
+            ラピスラズリ湖畔の寝顔取得状況が表示されるタブです。
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+<!--
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>はじめてのHTMLがんばりマン</title>
         <link rel="stylesheet" href="style.css">
-        <!--
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
-        <meta name="theme-color" content="#f9f9f9"/>
-        <meta name="description" content="これはテストです"/>
-        -->
+
     </head>
     
     <body> 
-   <h1>ポケモン Gotcha! テーブル</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Gotcha</th>
-                <th>No.</th>
-                <th>Rarity</th>
-                <th>Name</th>
-                <th>ワカクサ本島</th>
-                <th>シアンの砂浜</th>
-                <th>トープ洞窟</th>
-                <th>ウノハナ雪原</th>
-                <th>ラピスラズリ湖畔</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
-                <td>001</td>
-                <td>1</td>
-                <td>フシギダネ</td>
-                <td>ノーマル2</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>ノーマル1</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
-                <td>001</td>
-                <td>2</td>
-                <td>フシギダネ</td>
-                <td>スーパー1</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>ノーマル1</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td> <!-- Gotcha: False -->
-                <td>001</td>
-                <td>3</td>
-                <td>フシギダネ</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>スーパー1</td>
-            </tr>
-        </tbody>
-    </table>
-
         <div class="Introduction">
             <h1>
                 [H1]HTML練習中
             </h1>  
-            <p>ここはパラグラフです。</p>
             <p>HTMLの練習中です。</p>
         </div>
         
-<div class="tab-4"> <!--1つ目のタブの内容-->
-    <label>
-        <input type="radio" name="tab-4" checked>
-        チェックリスト
-    </label>
-    <div>
-        寝顔の一覧が表示され、取得済みの寝顔をチェックすることで、
-        2つ目以降のタブで取得状況が確認できるようになります。
+        <div class="tab-4"> 
+            <label>
+                <input type="radio" name="tab-4" checked>
+                チェックリスト
+            </label>
+        <div>
+            寝顔の一覧が表示され、取得済みの寝顔をチェックすることで、
+            2つ目以降のタブで取得状況が確認できるようになります。
 
-   <h1>ポケモン Gotcha! テーブル</h1>
     <table>
         <thead>
             <tr>
@@ -102,7 +226,7 @@
         </thead>
         <tbody>
             <tr>
-                <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                <td><input type="checkbox" checked></td> 
                 <td>001</td>
                 <td>1</td>
                 <td>フシギダネ</td>
@@ -113,7 +237,7 @@
                 <td>ノーマル1</td>
             </tr>
             <tr>
-                <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                <td><input type="checkbox" checked></td> 
                 <td>001</td>
                 <td>2</td>
                 <td>フシギダネ</td>
@@ -124,7 +248,7 @@
                 <td>ノーマル1</td>
             </tr>
             <tr>
-                <td><input type="checkbox"></td> <!-- Gotcha: False -->
+                <td><input type="checkbox"></td>
                 <td>001</td>
                 <td>3</td>
                 <td>フシギダネ</td>
@@ -140,7 +264,7 @@
     </div>
 
     <label>
-        <input type="radio" name="tab-4"> <!--2つ目のタブの内容-->
+        <input type="radio" name="tab-4">
         ワカクサ本島
     </label>
     <div>
@@ -148,7 +272,7 @@
     </div>
 
     <label>
-        <input type="radio" name="tab-4"> <!--3つ目のタブの内容-->
+        <input type="radio" name="tab-4">
         シアンの砂浜
     </label>
     <div>
@@ -156,7 +280,7 @@
     </div>
 
     <label>
-        <input type="radio" name="tab-4"> <!--4つ目のタブの内容-->
+        <input type="radio" name="tab-4">
         トープ洞窟
     </label>
     <div>
@@ -164,7 +288,7 @@
     </div>
 
     <label>
-        <input type="radio" name="tab-4"> <!--5つ目のタブの内容-->
+        <input type="radio" name="tab-4">
         ウノハナ雪原
     </label>
     <div>
@@ -172,7 +296,7 @@
     </div>
 
     <label>
-        <input type="radio" name="tab-4"> <!--6つ目のタブの内容-->
+        <input type="radio" name="tab-4">
         ラピスラズリ湖畔
     </label>
     <div>
@@ -180,7 +304,7 @@
     </div>
 </div>
         
-       <!-- <script src="script.js"></script> -->
     </body>
     
 </html>
+-->
