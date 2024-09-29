@@ -1,43 +1,50 @@
-.tab-2 {
+.tab-4 {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 10px;
     max-width: 1000px;
 }
 
-.tab-2 > label {
+.tab-4 > label {
     flex: 1 1;
     order: -1;
-    opacity: .5;
+    position: relative;
     min-width: 70px;
-    padding: .6em 1em;
-    border-radius: 5px 5px 0 0;
-    background-color: #2589d0;
-    color: #fff;
+    padding: .7em 1em;
+    background-color: #f2f2f2;
+    color: #999;
     font-size: .9em;
     text-align: center;
     cursor: pointer;
 }
 
-.tab-2 > label:hover {
-    opacity: .8;
+.tab-4 > label:hover,
+.tab-4 label:has(:checked) {
+    background-color: #2589d0;
+    color: #fff;
 }
 
-.tab-2 input {
+.tab-4 label:has(:checked)::before {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 9px;
+    background-color: #2589d0;
+    content: '';
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.tab-4 input {
     display: none;
 }
 
-.tab-2 > div {
+.tab-4 > div {
     display: none;
     width: 100%;
     padding: 1.5em 1em;
-    background-color: #fff;
 }
 
-.tab-2 label:has(:checked) {
-    opacity: 1;
-}
-
-.tab-2 label:has(:checked) + div {
+.tab-4 label:has(:checked) + div {
     display: block;
 }
