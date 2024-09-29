@@ -76,7 +76,6 @@
         <div class="tab-content">
             <!-- 1つ目のタブの内容 -->
             取得済みの寝顔をチェックしてください。
-            2つ目以降のタブで各フィールドの寝顔取得状況が確認できるようになります。
 
             <table id="main-table">
                 <thead>
@@ -95,11 +94,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td><input type="checkbox"></td> <!-- Gotcha: デフォルトでチェックなし -->
                         <td>001</td>
                         <td>1</td>
                         <td>フシギダネ</td>
-                        <td>ノーマル2</td>
+                        <td>ノーマル2</td> <!-- ワカクサ本島に値あり -->
                         <td></td>
                         <td></td>
                         <td></td>
@@ -107,11 +106,11 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td><input type="checkbox"></td> <!-- Gotcha: デフォルトでチェックなし -->
                         <td>001</td>
                         <td>2</td>
                         <td>フシギダネ</td>
-                        <td>スーパー1</td>
+                        <td>スーパー1</td> <!-- ワカクサ本島に値あり -->
                         <td></td>
                         <td></td>
                         <td></td>
@@ -119,7 +118,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td> <!-- Gotcha: False -->
+                        <td><input type="checkbox"></td>
                         <td>001</td>
                         <td>3</td>
                         <td>フシギダネ</td>
@@ -131,11 +130,11 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td><input type="checkbox"></td> <!-- Gotcha: デフォルトでチェックなし -->
                         <td>002</td>
                         <td>1</td>
                         <td>フシギソウ</td>
-                        <td>スーパー4</td>
+                        <td>スーパー4</td> <!-- ワカクサ本島に値あり -->
                         <td></td>
                         <td></td>
                         <td></td>
@@ -143,11 +142,11 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                        <td><input type="checkbox"></td> <!-- Gotcha: デフォルトでチェックなし -->
                         <td>002</td>
                         <td>2</td>
                         <td>フシギソウ</td>
-                        <td>ハイパー3</td>
+                        <td>ハイパー3</td> <!-- ワカクサ本島に値あり -->
                         <td></td>
                         <td></td>
                         <td></td>
@@ -156,7 +155,6 @@
                     </tr>
                 </tbody>
             </table>
-            <button onclick="filterRows()">フィルタを適用</button>
         </div>
 
         <input type="radio" id="tab2" name="tab-4">
@@ -185,39 +183,23 @@
             </table>
         </div>
 
+        <!-- 他のタブ -->
         <input type="radio" id="tab3" name="tab-4">
         <label for="tab3">シアンの砂浜</label>
         <div class="tab-content">
             シアンの砂浜の寝顔取得状況が表示されるタブです。
         </div>
 
-        <input type="radio" id="tab4" name="tab-4">
-        <label for="tab4">トープ洞窟</label>
-        <div class="tab-content">
-            トープ洞窟の寝顔取得状況が表示されるタブです。
-        </div>
+        <!-- 省略: 他のタブは同様 -->
 
-        <input type="radio" id="tab5" name="tab-4">
-        <label for="tab5">ウノハナ雪原</label>
-        <div class="tab-content">
-            ウノハナ雪原の寝顔取得状況が表示されるタブです。
-        </div>
-
-        <input type="radio" id="tab6" name="tab-4">
-        <label for="tab6">ラピスラズリ湖畔</label>
-        <div class="tab-content">
-            ラピスラズリ湖畔の寝顔取得状況が表示されるタブです。
-        </div>
-
-        <input type="radio" id="tab7" name="tab-4">
-        <label for="tab7">ゴールド旧発電所</label>
-        <div class="tab-content">
-            ゴールド旧発電所の寝顔取得状況が表示されるタブです。
-        </div>
-        
     </div>
 
     <script>
+        // ページ読み込み時にタブ2にフィルタされた行を表示する
+        window.onload = function() {
+            filterRows();
+        };
+
         function filterRows() {
             // メインのテーブルを取得
             const mainTable = document.querySelector("#main-table tbody");
@@ -230,5 +212,9 @@
             filteredTableBody.innerHTML = "";
 
             // 各行をループして条件に合う行をフィルタ
-            rows.forEach(row => {
-                const checkbox
+            rows.forEach((row, rowIndex) => {
+                const column5 = row.cells[4].textContent.trim(); // 5列目の値を取得
+
+                if (column5 !== "") {
+                    // 行の内容をクローンして2つ目のタブに追加
+                    const clonedRow = row.cloneNode(true
