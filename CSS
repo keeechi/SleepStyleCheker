@@ -1,0 +1,18 @@
+.tab-2 input {
+    display: none;
+}
+
+.tab-2 > div {
+    display: none;
+    width: 100%;
+    padding: 1.5em 1em;
+    background-color: #fff;
+}
+
+.tab-2 label:has(:checked) {
+    opacity: 1;
+}
+
+.tab-2 label:has(:checked) + div {
+    display: block;
+}
