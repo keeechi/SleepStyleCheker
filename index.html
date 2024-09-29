@@ -85,15 +85,58 @@
         寝顔の一覧が表示され、取得済みの寝顔をチェックすることで、
         2つ目以降のタブで取得状況が確認できるようになります。
 
-        <div>
-            <h2>ここから下はChecklistです</h2>
-            <p>現在取得している寝顔をチェックしてください</p>
-                <!-- チェックボックスと対応する文章を追加 -->
-                <p> <input type="checkbox" id="001-1"> <label for="001-1"> 001 フシギダネ ☆1</label> </p>
-                <p> <input type="checkbox" id="001-2"> <label for="001-2"> 001 フシギダネ ☆2</label> </p>
-                <p> <input type="checkbox" id="001-3"> <label for="001-3"> 001 フシギダネ ☆3</label> </p>
-                <p> <input type="checkbox" id="001-4"> <label for="001-4"> 001 フシギダネ ☆4</label> </p>
-        </div>
+   <h1>ポケモン Gotcha! テーブル</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Gotcha</th>
+                <th>No.</th>
+                <th>Rarity</th>
+                <th>Name</th>
+                <th>ワカクサ本島</th>
+                <th>シアンの砂浜</th>
+                <th>トープ洞窟</th>
+                <th>ウノハナ雪原</th>
+                <th>ラピスラズリ湖畔</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                <td>001</td>
+                <td>1</td>
+                <td>フシギダネ</td>
+                <td>ノーマル2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>ノーマル1</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
+                <td>001</td>
+                <td>2</td>
+                <td>フシギダネ</td>
+                <td>スーパー1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>ノーマル1</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td> <!-- Gotcha: False -->
+                <td>001</td>
+                <td>3</td>
+                <td>フシギダネ</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>スーパー1</td>
+            </tr>
+        </tbody>
+    </table>
+        
     </div>
 
     <label>
