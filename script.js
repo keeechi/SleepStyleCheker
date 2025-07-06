@@ -1,3 +1,4 @@
+// 任意のシート名対応版（01_main、02_wakakusaなど）
 let checkStatus = {};
 
 function generateRow(item, index, sheetName) {
@@ -9,7 +10,7 @@ function generateRow(item, index, sheetName) {
     const isChecked = checkStatus[index] || false;
     return `<tr>
         <td><input type="checkbox" id="gotcha_${index}_${sheetName}" ${isChecked ? "checked" : ""}></td>
-        <td>${item.no}</td>
+        <td>${item.number}</td>
         <td>${item.type}</td>
         <td>${"★".repeat(item.rarity)}${"☆".repeat(5 - item.rarity)}</td>
         <td>${item.name}</td>
@@ -22,10 +23,10 @@ window.onload = () => {
     const tbodyWakakusa = document.getElementById("table-body-wakakusa");
 
     sleepFaces.forEach((item, index) => {
-        tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "main"));
+        tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "01_main"));
 
         if (item.conditions.some(c => c.field === "ワカクサ本島")) {
-            tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "wakakusa"));
+            tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "02_wakakusa"));
         }
     });
 
@@ -34,8 +35,8 @@ window.onload = () => {
 
 function setCheckboxEvents() {
     sleepFaces.forEach((item, index) => {
-        const mainCheckbox = document.getElementById(`gotcha_${index}_main`);
-        const wakakusaCheckbox = document.getElementById(`gotcha_${index}_wakakusa`);
+        const mainCheckbox = document.getElementById(`gotcha_${index}_01_main`);
+        const wakakusaCheckbox = document.getElementById(`gotcha_${index}_02_wakakusa`);
 
         if (mainCheckbox) {
             mainCheckbox.addEventListener('change', () => {
@@ -55,8 +56,8 @@ function setCheckboxEvents() {
 
 function syncCheckboxes(index) {
     const isChecked = checkStatus[index];
-    const mainCheckbox = document.getElementById(`gotcha_${index}_main`);
-    const wakakusaCheckbox = document.getElementById(`gotcha_${index}_wakakusa`);
+    const mainCheckbox = document.getElementById(`gotcha_${index}_01_main`);
+    const wakakusaCheckbox = document.getElementById(`gotcha_${index}_02_wakakusa`);
 
     if (mainCheckbox) mainCheckbox.checked = isChecked;
     if (wakakusaCheckbox) wakakusaCheckbox.checked = isChecked;
