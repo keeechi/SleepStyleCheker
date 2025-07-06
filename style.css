@@ -87,6 +87,16 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+.checklist-item {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.checklist-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
 tr:hover {
     background-color: #ddd;
 }
