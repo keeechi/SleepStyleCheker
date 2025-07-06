@@ -17,6 +17,21 @@ function generateRow(item, index, sheetName) {
     </tr>`;
 }
 
+window.onload = () => {
+    const tbodyMain = document.getElementById("table-body-main");
+    const tbodyWakakusa = document.getElementById("table-body-wakakusa");
+
+    sleepFaces.forEach((item, index) => {
+        tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "main"));
+
+        if (item.conditions.some(c => c.field === "ワカクサ本島")) {
+            tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "wakakusa"));
+        }
+    });
+
+    setCheckboxEvents();
+};
+
 function setCheckboxEvents() {
     sleepFaces.forEach((item, index) => {
         const mainCheckbox = document.getElementById(`gotcha_${index}_main`);
@@ -28,6 +43,7 @@ function setCheckboxEvents() {
                 syncCheckboxes(index);
             });
         }
+
         if (wakakusaCheckbox) {
             wakakusaCheckbox.addEventListener('change', () => {
                 checkStatus[index] = wakakusaCheckbox.checked;
@@ -45,21 +61,6 @@ function syncCheckboxes(index) {
     if (mainCheckbox) mainCheckbox.checked = isChecked;
     if (wakakusaCheckbox) wakakusaCheckbox.checked = isChecked;
 }
-
-window.onload = () => {
-    const tbodyMain = document.getElementById("table-body-main");
-    const tbodyWakakusa = document.getElementById("table-body-wakakusa");
-
-    sleepFaces.forEach((item, index) => {
-        tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "main"));
-
-        if (item.conditions.some(c => c.field === "ワカクサ本島")) {
-            tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "wakakusa"));
-        }
-    });
-
-    setCheckboxEvents();
-};
 
 // カビゴンランク数値 → ランク名変換用
 const rankMap = {
