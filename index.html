@@ -15,13 +15,14 @@
 
     <div class="tab-4">
         <input type="radio" id="tab1" name="tab-4" checked>
-        <label for="tab1">チェックリスト</label>
+        <label for="tab1">メインシート</label>
         <div class="tab-content">
             <table id="main-table">
                 <thead>
                     <tr>
                         <th>Gotcha</th>
                         <th>No.</th>
+                        <th>Type</th>
                         <th>Rarity</th>
                         <th>Name</th>
                         <th>ワカクサ本島</th>
@@ -32,8 +33,8 @@
                         <th>ゴールド旧発電所</th>
                     </tr>
                 </thead>
-                <tbody id="table-body">
-                    <!-- JavaScriptで自動生成される -->
+                <tbody id="table-body-main">
+                    <!-- 自動生成 -->
                 </tbody>
             </table>
         </div>
@@ -41,72 +42,72 @@
         <input type="radio" id="tab2" name="tab-4">
         <label for="tab2">ワカクサ本島</label>
         <div class="tab-content">
-            ワカクサ本島の寝顔取得状況が表示されるタブです。
+            <table><thead><tr>
+                        <th>Gotcha</th>
+                        <th>No.</th>
+                        <th>Type</th>
+                        <th>Rarity</th>
+                        <th>Name</th>
+                        <th>ワカクサ本島</th>
+                        <th>シアンの砂浜</th>
+                        <th>トープ洞窟</th>
+                        <th>ウノハナ雪原</th>
+                        <th>ラピスラズリ湖畔</th>
+                        <th>ゴールド旧発電所</th>
+            </tr></thead>
+            <tbody id="table-body-wakakusa"></tbody>
+            </table>
         </div>
 
-        <!-- 他のタブは省略 -->
+        <!-- 他タブも同様に必要に応じて配置 -->
     </div>
 
     <script src="script.js"></script>
     <script>
-        const sleepFaces = [
-            {
-                pokemon: "0001_フシギダネ",
-                face: "★☆☆☆☆",
-                conditions: [
-                    { field: "ワカクサ本島", minRank: 2 },
-                    { field: "ラピスラズリ湖畔", minRank: 1 }
-                ]
-            },
-            {
-                pokemon: "0001_フシギダネ",
-                face: "★★☆☆☆",
-                conditions: [
-                    { field: "ワカクサ本島", minRank: 6 },
-                    { field: "ラピスラズリ湖畔", minRank: 1 }
-                ]
-            },
-            {
-                pokemon: "0001_フシギダネ",
-                face: "★★★☆☆",
-                conditions: [
-                    { field: "ラピスラズリ湖畔", minRank: 6 }
-                ]
-            },
-            {
-                pokemon: "0001_フシギダネ",
-                face: "★★★★☆",
-                conditions: [
-                    { field: "ラピスラズリ湖畔", minRank: 6 }
-                ]
-            }
-        ];
+    const fields = ["ワカクサ本島", "シアンの砂浜", "トープ洞窟", "ウノハナ雪原", "ラピスラズリ湖畔", "ゴールド旧発電所"];
 
-        const fields = ["ワカクサ本島", "シアンの砂浜", "トープ洞窟", "ウノハナ雪原", "ラピスラズリ湖畔", "ゴールド旧発電所"];
+    const sleepFaces = [
+        { no: "0001", type: "うとうと", rarity: 1, name: "フシギダネ", conditions: [ { field: "ワカクサ本島", minRank: 6 }, { field: "ラピスラズリ湖畔", minRank: 1 } ] },
+        { no: "0181", type: "すやすや", rarity: 3, name: "デンリュウ", conditions: [ { field: "ウノハナ雪原", minRank: 22 }, { field: "ゴールド旧発電所", minRank: 20 } ] },
+        { no: "0303", type: "ぐっすり", rarity: 4, name: "クチート", conditions: [ { field: "ワカクサ本島", minRank: 23 }, { field: "トープ洞窟", minRank: 19 }, { field: "ゴールド旧発電所", minRank: 16 } ] },
+        { no: "0491", type: "うとうと", rarity: 3, name: "ダークライ", conditions: [ { field: "ワカクサ本島", minRank: 1 }, { field: "シアンの砂浜", minRank: 1 }, { field: "トープ洞窟", minRank: 1 }, { field: "ウノハナ雪原", minRank: 1 }, { field: "ラピスラズリ湖畔", minRank: 1 }, { field: "ゴールド旧発電所", minRank: 1 } ] }
+    ];
 
-        const tbody = document.getElementById("table-body");
+    function convertRank(rank) {
+        if (rank <= 5) return `ノーマル${rank}`;
+        if (rank <= 10) return `スーパー${rank - 5}`;
+        if (rank <= 15) return `ハイパー${rank - 10}`;
+        return `マスター${rank - 15}`;
+    }
+
+    function generateRow(item, index) {
+        const fieldCells = fields.map(f => {
+            const found = item.conditions.find(c => c.field === f);
+            return `<td>${found ? convertRank(found.minRank) : ""}</td>`;
+        }).join("");
+
+        return `<tr>
+            <td><input type="checkbox" id="gotcha_${index}"></td>
+            <td>${item.no}</td>
+            <td>${item.type}</td>
+            <td>${"★".repeat(item.rarity)}${"☆".repeat(5 - item.rarity)}</td>
+            <td>${item.name}</td>
+            ${fieldCells}
+        </tr>`;
+    }
+
+    window.onload = () => {
+        const tbodyMain = document.getElementById("table-body-main");
+        const tbodyWakakusa = document.getElementById("table-body-wakakusa");
 
         sleepFaces.forEach((item, index) => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td><input type="checkbox" id="gotcha_${index}"></td>
-                <td>${item.pokemon.replace("0001_", "001")}</td>
-                <td>${item.face}</td>
-                <td>フシギダネ</td>
-                ${fields.map(f => {
-                    const condition = item.conditions.find(c => c.field === f);
-                    return `<td>${condition ? convertRank(condition.minRank) : ""}</td>`;
-                }).join("")}
-            `;
-            tbody.appendChild(tr);
-        });
+            tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index));
 
-        function convertRank(rank) {
-            if (rank <= 5) return `ノーマル${rank}`;
-            if (rank <= 10) return `スーパー${rank - 5}`;
-            if (rank <= 15) return `ハイパー${rank - 10}`;
-            return `マスター${rank - 15}`;
-        }
+            if (item.conditions.some(c => c.field === "ワカクサ本島")) {
+                tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+            }
+        });
+    };
     </script>
 </body>
 </html>
