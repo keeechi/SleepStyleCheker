@@ -1,4 +1,4 @@
-// 任意のシート名対応版（01_main、02_wakakusaなど）
+// 正しく連動するように修正済み完全版
 let checkStatus = {};
 
 function generateRow(item, index, sheetName) {
@@ -7,9 +7,10 @@ function generateRow(item, index, sheetName) {
         return `<td>${found ? convertRank(found.minRank) : ""}</td>`;
     }).join("");
 
+    // チェック状態をしっかり見てHTML生成
     const isChecked = checkStatus[index] || false;
     return `<tr>
-        <td><input type="checkbox" id="gotcha_${index}_${sheetName}" ${isChecked ? "checked" : ""}></td>
+        <td><input type="checkbox" class="gotcha" data-index="${index}" ${isChecked ? "checked" : ""}></td>
         <td>${item.number}</td>
         <td>${item.type}</td>
         <td>${"★".repeat(item.rarity)}${"☆".repeat(5 - item.rarity)}</td>
@@ -29,28 +30,27 @@ window.onload = () => {
             tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "02_wakakusa"));
         }
     });
-    
+
     setCheckboxEvents();
 };
 
 function setCheckboxEvents() {
-    sleepFaces.forEach((item, index) => {
-        const checkboxes = document.querySelectorAll(`[id^="gotcha_${index}_"]`);
-
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                checkStatus[index] = checkbox.checked;
-                syncCheckboxes(index);
-            });
+    const allCheckboxes = document.querySelectorAll(".gotcha");
+    allCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const index = checkbox.getAttribute("data-index");
+            const isChecked = checkbox.checked;
+            checkStatus[index] = isChecked;
+            syncCheckboxes(index);
         });
     });
 }
 
 function syncCheckboxes(index) {
     const isChecked = checkStatus[index];
-    const checkboxes = document.querySelectorAll(`[id^="gotcha_${index}_"]`);
+    const relatedCheckboxes = document.querySelectorAll(`.gotcha[data-index='${index}']`);
 
-    checkboxes.forEach(checkbox => {
+    relatedCheckboxes.forEach(checkbox => {
         checkbox.checked = isChecked;
     });
 }
