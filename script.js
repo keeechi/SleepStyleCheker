@@ -1,17 +1,14 @@
 let checkStatus = {};  // index番号をキーに取得済み状態を保持
 
-function generateRow(item, index, isMainSheet = false) {
+function generateRow(item, index, sheetName) {
     const fieldCells = fields.map(f => {
         const found = item.conditions.find(c => c.field === f);
         return `<td>${found ? convertRank(found.minRank) : ""}</td>`;
     }).join("");
 
-    // チェックボックスHTML生成（初期状態はcheckStatus参照）
     const isChecked = checkStatus[index] || false;
-    const checkboxHTML = `<input type="checkbox" id="gotcha_${index}_${isMainSheet ? 'main' : 'sub'}" ${isChecked ? "checked" : ""}>`;
-
     return `<tr>
-        <td>${checkboxHTML}</td>
+        <td><input type="checkbox" id="gotcha_${index}_${sheetName}" ${isChecked ? "checked" : ""}></td>
         <td>${item.no}</td>
         <td>${item.type}</td>
         <td>${"★".repeat(item.rarity)}${"☆".repeat(5 - item.rarity)}</td>
@@ -25,12 +22,10 @@ window.onload = () => {
     const tbodyWakakusa = document.getElementById("table-body-wakakusa");
 
     sleepFaces.forEach((item, index) => {
-        // メインシート行生成
-        tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, true));
+        tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "main"));
 
-        // ワカクサ本島フィルタ行生成
         if (item.conditions.some(c => c.field === "ワカクサ本島")) {
-            tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+            tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "wakakusa"));
         }
     });
 
@@ -40,30 +35,31 @@ window.onload = () => {
 function setCheckboxEvents() {
     sleepFaces.forEach((item, index) => {
         const mainCheckbox = document.getElementById(`gotcha_${index}_main`);
+        const wakakusaCheckbox = document.getElementById(`gotcha_${index}_wakakusa`);
+
         if (mainCheckbox) {
             mainCheckbox.addEventListener('change', () => {
                 checkStatus[index] = mainCheckbox.checked;
-                updateAllCheckboxes(index);
+                syncCheckboxes(index);
             });
         }
 
-        const subCheckbox = document.getElementById(`gotcha_${index}_sub`);
-        if (subCheckbox) {
-            subCheckbox.addEventListener('change', () => {
-                checkStatus[index] = subCheckbox.checked;
-                updateAllCheckboxes(index);
+        if (wakakusaCheckbox) {
+            wakakusaCheckbox.addEventListener('change', () => {
+                checkStatus[index] = wakakusaCheckbox.checked;
+                syncCheckboxes(index);
             });
         }
     });
 }
 
-function updateAllCheckboxes(index) {
+function syncCheckboxes(index) {
     const isChecked = checkStatus[index];
     const mainCheckbox = document.getElementById(`gotcha_${index}_main`);
-    const subCheckbox = document.getElementById(`gotcha_${index}_sub`);
+    const wakakusaCheckbox = document.getElementById(`gotcha_${index}_wakakusa`);
 
     if (mainCheckbox) mainCheckbox.checked = isChecked;
-    if (subCheckbox) subCheckbox.checked = isChecked;
+    if (wakakusaCheckbox) wakakusaCheckbox.checked = isChecked;
 }
 
 // カビゴンランク数値 → ランク名変換用
