@@ -3,81 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>はじめてのHTMLがんばりマン</title>
+    <title>ポケモンスリープ寝顔チェッカー</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* 基本スタイル */
-        body {
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            text-align: center;
-        }
-        .tab-4 {
-            margin: 20px;
-        }
-
-        /* タブの切り替えを制御 */
-        .tab-4 input[type="radio"] {
-            display: none;
-        }
-        .tab-4 label {
-            cursor: pointer;
-            padding: 10px;
-            margin-right: 5px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-        }
-        .tab-4 label:hover {
-            background-color: #ddd;
-        }
-        .tab-4 input[type="radio"]:checked + label {
-            background-color: #ccc;
-            font-weight: bold;
-        }
-
-        /* タブコンテンツの表示切替 */
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-        }
-        .tab-4 input[type="radio"]:checked + label + .tab-content {
-            display: block;
-        }
-
-        /* テーブルスタイル */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
 </head>
 
 <body>
     <div class="Introduction">
-        <h1>ポケモンスリープ寝顔チェッカー(HTML練習中)</h1>
-        <p>HTMLの練習中です。</p>
+        <h1>ポケモンスリープ寝顔チェッカー</h1>
+        <p>取得済みの寝顔をチェックしてください。</p>
     </div>
 
     <div class="tab-4">
         <input type="radio" id="tab1" name="tab-4" checked>
         <label for="tab1">チェックリスト</label>
         <div class="tab-content">
-            <!-- 1つ目のタブの内容 -->
-            取得済みの寝顔をチェックしてください。
-            2つ目以降のタブで各フィールドの寝顔取得状況が確認できるようになります。
-
             <table id="main-table">
                 <thead>
                     <tr>
@@ -93,144 +32,81 @@
                         <th>ゴールド旧発電所</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
-                        <td>001</td>
-                        <td>1</td>
-                        <td>フシギダネ</td>
-                        <td>ノーマル2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>ノーマル1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
-                        <td>001</td>
-                        <td>2</td>
-                        <td>フシギダネ</td>
-                        <td>スーパー1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>ノーマル1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td> <!-- Gotcha: False -->
-                        <td>001</td>
-                        <td>3</td>
-                        <td>フシギダネ</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>スーパー1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
-                        <td>002</td>
-                        <td>1</td>
-                        <td>フシギソウ</td>
-                        <td>スーパー4</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>ノーマル3</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" checked></td> <!-- Gotcha: True -->
-                        <td>002</td>
-                        <td>2</td>
-                        <td>フシギソウ</td>
-                        <td>ハイパー3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>スーパー2</td>
-                        <td></td>
-                    </tr>
+                <tbody id="table-body">
+                    <!-- JavaScriptで自動生成される -->
                 </tbody>
             </table>
-            <button onclick="filterRows()">フィルタを適用</button>
         </div>
 
         <input type="radio" id="tab2" name="tab-4">
         <label for="tab2">ワカクサ本島</label>
-        <div class="tab-content" id="filtered-content">
-            <!-- 2つ目のタブの内容 -->
-            <h2>フィルタされた結果</h2>
-            <table id="filtered-table">
-                <thead>
-                    <tr>
-                        <th>Gotcha</th>
-                        <th>No.</th>
-                        <th>Rarity</th>
-                        <th>Name</th>
-                        <th>ワカクサ本島</th>
-                        <th>シアンの砂浜</th>
-                        <th>トープ洞窟</th>
-                        <th>ウノハナ雪原</th>
-                        <th>ラピスラズリ湖畔</th>
-                        <th>ゴールド旧発電所</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- JavaScriptでフィルタされた行が追加されます -->
-                </tbody>
-            </table>
+        <div class="tab-content">
+            ワカクサ本島の寝顔取得状況が表示されるタブです。
         </div>
 
-        <input type="radio" id="tab3" name="tab-4">
-        <label for="tab3">シアンの砂浜</label>
-        <div class="tab-content">
-            シアンの砂浜の寝顔取得状況が表示されるタブです。
-        </div>
-
-        <input type="radio" id="tab4" name="tab-4">
-        <label for="tab4">トープ洞窟</label>
-        <div class="tab-content">
-            トープ洞窟の寝顔取得状況が表示されるタブです。
-        </div>
-
-        <input type="radio" id="tab5" name="tab-4">
-        <label for="tab5">ウノハナ雪原</label>
-        <div class="tab-content">
-            ウノハナ雪原の寝顔取得状況が表示されるタブです。
-        </div>
-
-        <input type="radio" id="tab6" name="tab-4">
-        <label for="tab6">ラピスラズリ湖畔</label>
-        <div class="tab-content">
-            ラピスラズリ湖畔の寝顔取得状況が表示されるタブです。
-        </div>
-
-        <input type="radio" id="tab7" name="tab-4">
-        <label for="tab7">ゴールド旧発電所</label>
-        <div class="tab-content">
-            ゴールド旧発電所の寝顔取得状況が表示されるタブです。
-        </div>
-        
+        <!-- 他のタブは省略 -->
     </div>
 
+    <script src="script.js"></script>
     <script>
-        function filterRows() {
-            // メインのテーブルを取得
-            const mainTable = document.querySelector("#main-table tbody");
-            const rows = mainTable.querySelectorAll("tr");
+        const sleepFaces = [
+            {
+                pokemon: "0001_フシギダネ",
+                face: "★☆☆☆☆",
+                conditions: [
+                    { field: "ワカクサ本島", minRank: 2 },
+                    { field: "ラピスラズリ湖畔", minRank: 1 }
+                ]
+            },
+            {
+                pokemon: "0001_フシギダネ",
+                face: "★★☆☆☆",
+                conditions: [
+                    { field: "ワカクサ本島", minRank: 6 },
+                    { field: "ラピスラズリ湖畔", minRank: 1 }
+                ]
+            },
+            {
+                pokemon: "0001_フシギダネ",
+                face: "★★★☆☆",
+                conditions: [
+                    { field: "ラピスラズリ湖畔", minRank: 6 }
+                ]
+            },
+            {
+                pokemon: "0001_フシギダネ",
+                face: "★★★★☆",
+                conditions: [
+                    { field: "ラピスラズリ湖畔", minRank: 6 }
+                ]
+            }
+        ];
 
-            // フィルタされたテーブルの tbody を取得
-            const filteredTableBody = document.querySelector("#filtered-table tbody");
+        const fields = ["ワカクサ本島", "シアンの砂浜", "トープ洞窟", "ウノハナ雪原", "ラピスラズリ湖畔", "ゴールド旧発電所"];
 
-            // 既存のフィルタされた行をクリア
-            filteredTableBody.innerHTML = "";
+        const tbody = document.getElementById("table-body");
 
-            // 各行をループして条件に合う行をフィルタ
-            rows.forEach(row => {
-                const checkbox
-                
-<script src="script.js"></script>
+        sleepFaces.forEach((item, index) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td><input type="checkbox" id="gotcha_${index}"></td>
+                <td>${item.pokemon.replace("0001_", "001")}</td>
+                <td>${item.face}</td>
+                <td>フシギダネ</td>
+                ${fields.map(f => {
+                    const condition = item.conditions.find(c => c.field === f);
+                    return `<td>${condition ? convertRank(condition.minRank) : ""}</td>`;
+                }).join("")}
+            `;
+            tbody.appendChild(tr);
+        });
+
+        function convertRank(rank) {
+            if (rank <= 5) return `ノーマル${rank}`;
+            if (rank <= 10) return `スーパー${rank - 5}`;
+            if (rank <= 15) return `ハイパー${rank - 10}`;
+            return `マスター${rank - 15}`;
+        }
+    </script>
+</body>
+</html>
