@@ -10,7 +10,7 @@ function generateRow(item, index, sheetName) {
     const isChecked = checkStatus[index] || false;
     return `<tr>
         <td><input type="checkbox" class="gotcha" data-index="${index}" data-sheet="${sheetName}" ${isChecked ? "checked" : ""}></td>
-        <td>${item.number}</td>
+        <td>${item.no}</td>
         <td>${item.type}</td>
         <td>${"★".repeat(item.rarity)}${"☆".repeat(5 - item.rarity)}</td>
         <td>${item.name}</td>
