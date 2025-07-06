@@ -29,38 +29,30 @@ window.onload = () => {
             tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "02_wakakusa"));
         }
     });
-
+    
     setCheckboxEvents();
 };
 
 function setCheckboxEvents() {
     sleepFaces.forEach((item, index) => {
-        const mainCheckbox = document.getElementById(`gotcha_${index}_01_main`);
-        const wakakusaCheckbox = document.getElementById(`gotcha_${index}_02_wakakusa`);
+        const checkboxes = document.querySelectorAll(`[id^="gotcha_${index}_"]`);
 
-        if (mainCheckbox) {
-            mainCheckbox.addEventListener('change', () => {
-                checkStatus[index] = mainCheckbox.checked;
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                checkStatus[index] = checkbox.checked;
                 syncCheckboxes(index);
             });
-        }
-
-        if (wakakusaCheckbox) {
-            wakakusaCheckbox.addEventListener('change', () => {
-                checkStatus[index] = wakakusaCheckbox.checked;
-                syncCheckboxes(index);
-            });
-        }
+        });
     });
 }
 
 function syncCheckboxes(index) {
     const isChecked = checkStatus[index];
-    const mainCheckbox = document.getElementById(`gotcha_${index}_01_main`);
-    const wakakusaCheckbox = document.getElementById(`gotcha_${index}_02_wakakusa`);
+    const checkboxes = document.querySelectorAll(`[id^="gotcha_${index}_"]`);
 
-    if (mainCheckbox) mainCheckbox.checked = isChecked;
-    if (wakakusaCheckbox) wakakusaCheckbox.checked = isChecked;
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = isChecked;
+    });
 }
 
 // カビゴンランク数値 → ランク名変換用
