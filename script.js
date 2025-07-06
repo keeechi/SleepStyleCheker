@@ -7,10 +7,9 @@ function generateRow(item, index, sheetName) {
         return `<td>${found ? convertRank(found.minRank) : ""}</td>`;
     }).join("");
 
-    // チェック状態をしっかり見てHTML生成
     const isChecked = checkStatus[index] || false;
     return `<tr>
-        <td><input type="checkbox" class="gotcha" data-index="${index}" ${isChecked ? "checked" : ""}></td>
+        <td><input type="checkbox" class="gotcha" data-index="${index}" data-sheet="${sheetName}" ${isChecked ? "checked" : ""}></td>
         <td>${item.number}</td>
         <td>${item.type}</td>
         <td>${"★".repeat(item.rarity)}${"☆".repeat(5 - item.rarity)}</td>
