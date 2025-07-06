@@ -1,44 +1,63 @@
-// 寝顔DB
+// カビゴンランク数値 → ランク名変換用
+const rankMap = {
+    1: 'ノーマル1', 2: 'ノーマル2', 3: 'ノーマル3', 4: 'ノーマル4', 5: 'ノーマル5',
+    6: 'スーパー1', 7: 'スーパー2', 8: 'スーパー3', 9: 'スーパー4', 10: 'スーパー5',
+    11: 'ハイパー1', 12: 'ハイパー2', 13: 'ハイパー3', 14: 'ハイパー4', 15: 'ハイパー5',
+    16: 'マスター1', 17: 'マスター2', 18: 'マスター3', 19: 'マスター4', 20: 'マスター5',
+    21: 'マスター6', 22: 'マスター7', 23: 'マスター8', 24: 'マスター9', 25: 'マスター10',
+    26: 'マスター11', 27: 'マスター12', 28: 'マスター13', 29: 'マスター14', 30: 'マスター15',
+    31: 'マスター16', 32: 'マスター17', 33: 'マスター18', 34: 'マスター19', 35: 'マスター20'
+};
+
+// データベース
 const sleepFaces = [
     {
-        pokemon: "0001_フシギダネ",
-        face: "★☆☆☆☆",
-        conditions: [
-            { field: "ワカクサ本島", minRank: 2 },
-            { field: "ラピスラズリ湖畔", minRank: 1 }
-        ]
-    },
-    {
-        pokemon: "0001_フシギダネ",
-        face: "★★☆☆☆",
+        id: 1,
+        number: "0001",
+        type: "うとうと",
+        rarity: 1,
+        name: "フシギダネ",
         conditions: [
             { field: "ワカクサ本島", minRank: 6 },
             { field: "ラピスラズリ湖畔", minRank: 1 }
         ]
     },
     {
-        pokemon: "0001_フシギダネ",
-        face: "★★★☆☆",
+        id: 2,
+        number: "0181",
+        type: "すやすや",
+        rarity: 3,
+        name: "デンリュウ",
         conditions: [
-            { field: "ラピスラズリ湖畔", minRank: 6 }
+            { field: "ウノハナ雪原", minRank: 22 },
+            { field: "ゴールド旧発電所", minRank: 20 }
         ]
     },
     {
-        pokemon: "0001_フシギダネ",
-        face: "★★★★☆",
+        id: 3,
+        number: "0303",
+        type: "ぐっすり",
+        rarity: 4,
+        name: "クチート",
         conditions: [
-            { field: "ラピスラズリ湖畔", minRank: 6 }
+            { field: "ワカクサ本島", minRank: 23 },
+            { field: "トープ洞窟", minRank: 19 },
+            { field: "ゴールド旧発電所", minRank: 16 }
+        ]
+    },
+    {
+        id: 4,
+        number: "0491",
+        type: "うとうと",
+        rarity: 3,
+        name: "ダークライ",
+        conditions: [
+            { field: "ワカクサ本島", minRank: 1 },
+            { field: "シアンの砂浜", minRank: 1 },
+            { field: "トープ洞窟", minRank: 1 },
+            { field: "ウノハナ雪原", minRank: 1 },
+            { field: "ラピスラズリ湖畔", minRank: 1 },
+            { field: "ゴールド旧発電所", minRank: 1 }
         ]
     }
 ];
-
-// チェックリスト自動生成
-window.onload = () => {
-    const area = document.getElementById("checklistArea");
-    sleepFaces.forEach((face, index) => {
-        const div = document.createElement("div");
-        div.className = "checklist-item";
-        div.innerHTML = `<input type="checkbox" id="face_${index}"> ${face.pokemon} - ${face.face}`;
-        area.appendChild(div);
-    });
-};
