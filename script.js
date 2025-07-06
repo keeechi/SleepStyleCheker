@@ -61,3 +61,73 @@ const sleepFaces = [
         ]
     }
 ];
+
+// チェック状態保存用（今後ローカルストレージ対応も可能）
+let checkStatus = {};
+
+// 表を生成
+window.onload = () => {
+    generateMainTable();
+};
+
+// 星表示用
+function getRarityStars(rarity) {
+    return '★'.repeat(rarity) + '☆'.repeat(5 - rarity);
+}
+
+// メインテーブル生成
+function generateMainTable() {
+    const tbody = document.getElementById('main-table-body');
+    tbody.innerHTML = '';
+
+    sleepFaces.forEach((face, index) => {
+        const tr = document.createElement('tr');
+
+        // チェックボックス
+        const tdCheck = document.createElement('td');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `gotcha_${index}`;
+        checkbox.checked = checkStatus[index] || false;
+
+        // チェックボックスの状態を記録
+        checkbox.addEventListener('change', () => {
+            checkStatus[index] = checkbox.checked;
+            // 他シートとの連動処理は次のSTEPで実装
+        });
+
+        tdCheck.appendChild(checkbox);
+        tr.appendChild(tdCheck);
+
+        // No.
+        const tdNo = document.createElement('td');
+        tdNo.textContent = face.number;
+        tr.appendChild(tdNo);
+
+        // Type
+        const tdType = document.createElement('td');
+        tdType.textContent = face.type;
+        tr.appendChild(tdType);
+
+        // Rarity
+        const tdRarity = document.createElement('td');
+        tdRarity.textContent = getRarityStars(face.rarity);
+        tr.appendChild(tdRarity);
+
+        // Name
+        const tdName = document.createElement('td');
+        tdName.textContent = face.name;
+        tr.appendChild(tdName);
+
+        // フィールドカラムを作成
+        const fields = ["ワカクサ本島", "シアンの砂浜", "トープ洞窟", "ウノハナ雪原", "ラピスラズリ湖畔", "ゴールド旧発電所"];
+        fields.forEach(field => {
+            const tdField = document.createElement('td');
+            const condition = face.conditions.find(c => c.field === field);
+            tdField.textContent = condition ? rankMap[condition.minRank] : '';
+            tr.appendChild(tdField);
+        });
+
+        tbody.appendChild(tr);
+    });
+}
