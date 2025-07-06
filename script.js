@@ -1,7 +1,7 @@
 // 寝顔DB
 const sleepFaces = [
     {
-        pokemon: "フシギダネ",
+        pokemon: "0001_フシギダネ",
         face: "★☆☆☆☆",
         conditions: [
             { field: "ワカクサ本島", minRank: 2 },
@@ -9,10 +9,25 @@ const sleepFaces = [
         ]
     },
     {
-        pokemon: "ピカチュウ",
-        face: "★☆☆☆☆",
+        pokemon: "0001_フシギダネ",
+        face: "★★☆☆☆",
         conditions: [
-            { field: "グリーンフィールド", minRank: 3 }
+            { field: "ワカクサ本島", minRank: 6 },
+            { field: "ラピスラズリ湖畔", minRank: 1 }
+        ]
+    },
+    {
+        pokemon: "0001_フシギダネ",
+        face: "★★★☆☆",
+        conditions: [
+            { field: "ラピスラズリ湖畔", minRank: 6 }
+        ]
+    },
+    {
+        pokemon: "0001_フシギダネ",
+        face: "★★★★☆",
+        conditions: [
+            { field: "ラピスラズリ湖畔", minRank: 6 }
         ]
     }
 ];
