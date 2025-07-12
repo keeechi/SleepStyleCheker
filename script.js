@@ -21,6 +21,10 @@ window.onload = () => {
     const tbodyMain = document.getElementById("table-body-main");
     const tbodyWakakusa = document.getElementById("table-body-wakakusa");
     const tbodyCyan = document.getElementByID("table-body-cyan");
+    const tbodyTaupe = document.getElementByID("table-body-taupe");
+    const tbodyUnohana = document.getElementByID("table-body-unohana");
+    const tbodyLapis = document.getElementByID("table-body-lapis");
+    const tbodyGold = document.getElementByID("table-body-gold");
 
     sleepFaces.forEach((item, index) => {
         tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "01_main"));
