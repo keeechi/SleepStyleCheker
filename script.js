@@ -1,4 +1,3 @@
-// 正しく連動するように修正済み完全版
 let checkStatus = {};
 
 function generateRow(item, index, sheetName) {
@@ -30,7 +29,7 @@ window.onload = () => {
         }
     });
 
-    setCheckboxEvents();
+    setCheckboxEvents();  // ← 必ずここでイベント追加
 };
 
 function setCheckboxEvents() {
@@ -48,7 +47,6 @@ function setCheckboxEvents() {
 function syncCheckboxes(index) {
     const isChecked = checkStatus[index];
     const relatedCheckboxes = document.querySelectorAll(`.gotcha[data-index='${index}']`);
-
     relatedCheckboxes.forEach(checkbox => {
         checkbox.checked = isChecked;
     });
