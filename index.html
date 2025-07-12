@@ -182,6 +182,7 @@
                 <tbody id="table-body-gold"></tbody>
             </table>
         </div>
+        
         <!-- 他のタブも必要に応じて追加 -->
     </div>
 
@@ -226,26 +227,26 @@ window.onload = () => {
         tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index));
 
         if (item.conditions.some(c => c.field === "ワカクサ本島")) {
-            tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
 
         if (item.conditions.some(c => c.field === "シアンの砂浜")) {
-        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index));
         }
 
         if (item.conditions.some(c => c.field === "トープ洞窟")) {
-        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        tbodyTaupe.insertAdjacentHTML("beforeend", generateRow(item, index));
         }
 
         if (item.conditions.some(c => c.field === "ウノハナ雪原")) {
-        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        tbodyUnohana.insertAdjacentHTML("beforeend", generateRow(item, index));
         }
 
         if (item.conditions.some(c => c.field === "ラピスラズリ湖畔")) {
-        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        tbodyLapis.insertAdjacentHTML("beforeend", generateRow(item, index));
         }
 
         if (item.conditions.some(c => c.field === "ゴールド旧発電所")) {
-        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        tbodyGold.insertAdjacentHTML("beforeend", generateRow(item, index));
         }
     });
 };
