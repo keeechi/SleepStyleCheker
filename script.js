@@ -46,7 +46,7 @@ function setCheckboxEvents() {
 
 function syncCheckboxes(index) {
     const isChecked = checkStatus[index];
-    const relatedCheckboxes = document.querySelectorAll(`.gotcha[data-index='${index}']`);
+    const relatedCheckboxes = document.querySelectorAll(`gotcha[data-index='${index}']`);
     relatedCheckboxes.forEach(checkbox => {
         checkbox.checked = isChecked;
     });
