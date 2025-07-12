@@ -20,12 +20,28 @@ function generateRow(item, index, sheetName) { //表の１行をHTMLで作る関
 window.onload = () => {
     const tbodyMain = document.getElementById("table-body-main");
     const tbodyWakakusa = document.getElementById("table-body-wakakusa");
+    const tbodyCyan = document.getElementByID("table-body-cyan");
 
     sleepFaces.forEach((item, index) => {
         tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "01_main"));
 
         if (item.conditions.some(c => c.field === "ワカクサ本島")) {
             tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "02_wakakusa"));
+
+        if (item.conditions.some(c => c.field === "シアンの砂浜")) {
+        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "03_cyan"));
+
+        if (item.conditions.some(c => c.field === "トープ洞窟")) {
+        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "04_taupe"));
+
+        if (item.conditions.some(c => c.field === "ウノハナ雪原")) {
+        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "04_unohana"));
+
+        if (item.conditions.some(c => c.field === "ラピスラズリ湖畔")) {
+        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "05_lapis"));
+
+        if (item.conditions.some(c => c.field === "ゴールド旧発電所")) {
+        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "06_gold"));
         }
     });
 
