@@ -27,25 +27,30 @@ window.onload = () => {
     const tbodyGold = document.getElementById("table-body-gold");
 
 sleepFaces.forEach((item, index) => {
-    tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "01_main"));
+    tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index));
 
     if (item.conditions.some(c => c.field === "ワカクサ本島")) {
-        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "02_wakakusa"));
+        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
     }
+
     if (item.conditions.some(c => c.field === "シアンの砂浜")) {
-        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "03_cyan"));
+        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index));
     }
+
     if (item.conditions.some(c => c.field === "トープ洞窟")) {
-        tbodyTaupe.insertAdjacentHTML("beforeend", generateRow(item, index, "04_taupe"));
+        tbodyTaupe.insertAdjacentHTML("beforeend", generateRow(item, index));
     }
+
     if (item.conditions.some(c => c.field === "ウノハナ雪原")) {
-        tbodyUnohana.insertAdjacentHTML("beforeend", generateRow(item, index, "05_unohana"));
+        tbodyUnohana.insertAdjacentHTML("beforeend", generateRow(item, index));
     }
+
     if (item.conditions.some(c => c.field === "ラピスラズリ湖畔")) {
-        tbodyLapis.insertAdjacentHTML("beforeend", generateRow(item, index, "06_lapis"));
+        tbodyLapis.insertAdjacentHTML("beforeend", generateRow(item, index));
     }
+
     if (item.conditions.some(c => c.field === "ゴールド旧発電所")) {
-        tbodyGold.insertAdjacentHTML("beforeend", generateRow(item, index, "07_gold"));
+        tbodyGold.insertAdjacentHTML("beforeend", generateRow(item, index));
     }
 });
 
