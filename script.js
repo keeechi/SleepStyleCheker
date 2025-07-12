@@ -1,10 +1,10 @@
-let checkStatus = {};
+let checkStatus = {}; //「チェックされているかどうか」を記録するためのメモ帳を作るコマンド
 
-function generateRow(item, index, sheetName) {
-    const fieldCells = fields.map(f => {
-        const found = item.conditions.find(c => c.field === f);
-        return `<td>${found ? convertRank(found.minRank) : ""}</td>`;
-    }).join("");
+function generateRow(item, index, sheetName) { //表の１行をHTMLで作る関数。itemには「ポケモンの情報」、indexは「何匹目か」、SheetNameは「どのシートか」を表す。
+    const fieldCells = fields.map(f => { //「どのフィールドに出現するか」の表の部分を作るために、６つのフィールドを順番に調べていく
+        const found = item.conditions.find(c => c.field === f); //そのポケモンが、今見ている場所（フィールド）に登場するかどうかを探す
+        return `<td>${found ? convertRank(found.minRank) : ""}</td>`; //出現するならば必要なランクを表示。出ないならば空白。これをtd~tdのセル形で表示。
+    }).join(""); //各フィールドに対して作ったtd~tdの行をすべて結合して１つの長いHTML文字列に変換する。
 
     const isChecked = checkStatus[index] || false;
     return `<tr>
@@ -33,7 +33,7 @@ window.onload = () => {
 };
 
 function setCheckboxEvents() {
-    const allCheckboxes = document.querySelectorAll("gotcha");
+    const allCheckboxes = document.querySelectorAll(".gotcha");
     allCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             const index = checkbox.getAttribute("data-index");
@@ -46,7 +46,7 @@ function setCheckboxEvents() {
 
 function syncCheckboxes(index) {
     const isChecked = checkStatus[index];
-    const relatedCheckboxes = document.querySelectorAll(`gotcha[data-index='${index}']`);
+    const relatedCheckboxes = document.querySelectorAll(`.gotcha[data-index='${index}']`);
     relatedCheckboxes.forEach(checkbox => {
         checkbox.checked = isChecked;
     });
