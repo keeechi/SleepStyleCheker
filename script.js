@@ -26,28 +26,28 @@ window.onload = () => {
     const tbodyLapis = document.getElementById("table-body-lapis");
     const tbodyGold = document.getElementById("table-body-gold");
 
-    sleepFaces.forEach((item, index) => {
-        tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "01_main"));
+sleepFaces.forEach((item, index) => {
+    tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index, "01_main"));
 
-        if (item.conditions.some(c => c.field === "ワカクサ本島")) {
+    if (item.conditions.some(c => c.field === "ワカクサ本島")) {
         tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index, "02_wakakusa"));
-
-        if (item.conditions.some(c => c.field === "シアンの砂浜")) {
+    }
+    if (item.conditions.some(c => c.field === "シアンの砂浜")) {
         tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "03_cyan"));
-
-        if (item.conditions.some(c => c.field === "トープ洞窟")) {
+    }
+    if (item.conditions.some(c => c.field === "トープ洞窟")) {
         tbodyTaupe.insertAdjacentHTML("beforeend", generateRow(item, index, "04_taupe"));
-
-        if (item.conditions.some(c => c.field === "ウノハナ雪原")) {
+    }
+    if (item.conditions.some(c => c.field === "ウノハナ雪原")) {
         tbodyUnohana.insertAdjacentHTML("beforeend", generateRow(item, index, "05_unohana"));
-
-        if (item.conditions.some(c => c.field === "ラピスラズリ湖畔")) {
+    }
+    if (item.conditions.some(c => c.field === "ラピスラズリ湖畔")) {
         tbodyLapis.insertAdjacentHTML("beforeend", generateRow(item, index, "06_lapis"));
-
-        if (item.conditions.some(c => c.field === "ゴールド旧発電所")) {
+    }
+    if (item.conditions.some(c => c.field === "ゴールド旧発電所")) {
         tbodyGold.insertAdjacentHTML("beforeend", generateRow(item, index, "07_gold"));
-        }
-    });
+    }
+});
 
     setCheckboxEvents();  // ← 必ずここでイベント追加
 };
