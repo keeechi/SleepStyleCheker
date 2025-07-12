@@ -132,6 +132,9 @@ window.onload = () => {
 
         if (item.conditions.some(c => c.field === "ワカクサ本島")) {
             tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+
+        if (item.conditions.some(c => c.field === "シアンの砂浜")) {
+        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
         }
     });
 };
