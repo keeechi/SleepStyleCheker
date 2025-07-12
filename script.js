@@ -36,16 +36,16 @@ window.onload = () => {
         tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "03_cyan"));
 
         if (item.conditions.some(c => c.field === "トープ洞窟")) {
-        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "04_taupe"));
+        tbodyTaupe.insertAdjacentHTML("beforeend", generateRow(item, index, "04_taupe"));
 
         if (item.conditions.some(c => c.field === "ウノハナ雪原")) {
-        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "04_unohana"));
+        tbodyUnohana.insertAdjacentHTML("beforeend", generateRow(item, index, "04_unohana"));
 
         if (item.conditions.some(c => c.field === "ラピスラズリ湖畔")) {
-        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "05_lapis"));
+        tbodyLapis.insertAdjacentHTML("beforeend", generateRow(item, index, "05_lapis"));
 
         if (item.conditions.some(c => c.field === "ゴールド旧発電所")) {
-        tbodyCyan.insertAdjacentHTML("beforeend", generateRow(item, index, "06_gold"));
+        tbodyGold.insertAdjacentHTML("beforeend", generateRow(item, index, "06_gold"));
         }
     });
 
