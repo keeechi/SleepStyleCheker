@@ -222,6 +222,11 @@ function generateRow(item, index) {
 window.onload = () => {
     const tbodyMain = document.getElementById("table-body-main");
     const tbodyWakakusa = document.getElementById("table-body-wakakusa");
+    const tbodyCyan = document.getElementById("table-body-cyan");
+    const tbodyTaupe = document.getElementById("table-body-taupe");
+    const tbodyUnohana = document.getElementById("table-body-unohana");
+    const tbodyLapis = document.getElementById("table-body-lapis");
+    const tbodyGold = document.getElementById("table-body-gold");
 
     sleepFaces.forEach((item, index) => {
         tbodyMain.insertAdjacentHTML("beforeend", generateRow(item, index));
