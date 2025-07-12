@@ -33,7 +33,7 @@ window.onload = () => {
 };
 
 function setCheckboxEvents() {
-    const allCheckboxes = document.querySelectorAll(".gotcha");
+    const allCheckboxes = document.querySelectorAll("gotcha");
     allCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             const index = checkbox.getAttribute("data-index");
