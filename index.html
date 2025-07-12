@@ -87,6 +87,101 @@
             </table>
         </div>
 
+        <!-- トープ洞窟 -->
+        <input type="radio" id="tab4" name="tab-4">
+        <label for="tab4">トープ洞窟</label>
+        <div class="tab-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gotcha</th>
+                        <th>No.</th>
+                        <th>Type</th>
+                        <th>Rarity</th>
+                        <th>Name</th>
+                        <th>ワカクサ本島</th>
+                        <th>シアンの砂浜</th>
+                        <th>トープ洞窟</th>
+                        <th>ウノハナ雪原</th>
+                        <th>ラピスラズリ湖畔</th>
+                        <th>ゴールド旧発電所</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body-taupe"></tbody>
+            </table>
+        </div>
+
+        <!-- ウノハナ雪原 -->
+        <input type="radio" id="tab5" name="tab-4">
+        <label for="tab5">ウノハナ雪原</label>
+        <div class="tab-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gotcha</th>
+                        <th>No.</th>
+                        <th>Type</th>
+                        <th>Rarity</th>
+                        <th>Name</th>
+                        <th>ワカクサ本島</th>
+                        <th>シアンの砂浜</th>
+                        <th>トープ洞窟</th>
+                        <th>ウノハナ雪原</th>
+                        <th>ラピスラズリ湖畔</th>
+                        <th>ゴールド旧発電所</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body-unohana"></tbody>
+            </table>
+        </div>
+
+        <!-- ラピスラズリ湖畔 -->
+        <input type="radio" id="tab6" name="tab-4">
+        <label for="tab6">ラピスラズリ湖畔</label>
+        <div class="tab-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gotcha</th>
+                        <th>No.</th>
+                        <th>Type</th>
+                        <th>Rarity</th>
+                        <th>Name</th>
+                        <th>ワカクサ本島</th>
+                        <th>シアンの砂浜</th>
+                        <th>トープ洞窟</th>
+                        <th>ウノハナ雪原</th>
+                        <th>ラピスラズリ湖畔</th>
+                        <th>ゴールド旧発電所</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body-lapis"></tbody>
+            </table>
+        </div>
+
+        <!-- ゴールド旧発電所 -->
+        <input type="radio" id="tab7" name="tab-4">
+        <label for="tab7">ゴールド旧発電所</label>
+        <div class="tab-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gotcha</th>
+                        <th>No.</th>
+                        <th>Type</th>
+                        <th>Rarity</th>
+                        <th>Name</th>
+                        <th>ワカクサ本島</th>
+                        <th>シアンの砂浜</th>
+                        <th>トープ洞窟</th>
+                        <th>ウノハナ雪原</th>
+                        <th>ラピスラズリ湖畔</th>
+                        <th>ゴールド旧発電所</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body-gold"></tbody>
+            </table>
+        </div>
         <!-- 他のタブも必要に応じて追加 -->
     </div>
 
@@ -134,6 +229,22 @@ window.onload = () => {
             tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
 
         if (item.conditions.some(c => c.field === "シアンの砂浜")) {
+        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        }
+
+        if (item.conditions.some(c => c.field === "トープ洞窟")) {
+        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        }
+
+        if (item.conditions.some(c => c.field === "ウノハナ雪原")) {
+        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        }
+
+        if (item.conditions.some(c => c.field === "ラピスラズリ湖畔")) {
+        tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
+        }
+
+        if (item.conditions.some(c => c.field === "ゴールド旧発電所")) {
         tbodyWakakusa.insertAdjacentHTML("beforeend", generateRow(item, index));
         }
     });
